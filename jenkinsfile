@@ -1,8 +1,8 @@
 stages {
-        println ("$instance_type")
-        println ("$instance_id")
         stage('Change instance type') {
             steps {
+                println ("$instance_type")
+                println ("$instance_id")
                 echo "Hello"
             }
         }
