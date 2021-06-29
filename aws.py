@@ -23,11 +23,12 @@ print("Changing the instance type to ",sys.argv[2])
 time.sleep(60)
 response = clnt.modify_instance_attribute(InstanceId = sys.argv[1],InstanceType={'Value': sys.argv[2]})
 #clnt.get_waiter('system_status_ok')
+print("Sleep 60")
 time.sleep(10)
 print("Starting the Instance")
 
 
-response = client.start_instances(InstanceIds=[sys.argv[2]], AdditionalInfo='string', DryRun=False)
+response = clnt.start_instances(InstanceIds=[sys.argv[2]], AdditionalInfo='string', DryRun=False)
 
 print(response)
 
