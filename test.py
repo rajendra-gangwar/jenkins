@@ -1,2 +1,4 @@
 #!/usr/bin/python3
-print("This is instance_id")
+import sys
+print("This is instance_id", sys.argv[0])
+print("This is instance_type", sys.argv[1])
