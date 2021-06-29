@@ -1,5 +1,7 @@
 stage('changing instance type') {
+    println ("$instance_type")
+    println ("$instance_id")
     steps {
-        sh 'python abc.py'
+        sh echo
     }
 }
