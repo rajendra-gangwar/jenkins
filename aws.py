@@ -31,10 +31,3 @@ print("Starting the Instance")
 response = clnt.start_instances(InstanceIds=[sys.argv[1]], AdditionalInfo='string', DryRun=False)
 
 print(response)
-
-'''inst.start()
-clnt.get_waiter('instance_running')
-        print(f"instance id {inst.id} is now in {inst.state['Name']} state" )
-else:
-        print("Something went wrong")
-'''
