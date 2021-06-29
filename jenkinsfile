@@ -1,3 +1,4 @@
+#!/usr/bin/env groovy
 stages {
         stage('Change instance type') {
             steps {
