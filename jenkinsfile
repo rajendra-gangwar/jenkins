@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Running python Script') {
             steps {
-                sh 'python3 test.py ${instance_id} ${instance_type}'
+                sh 'python3 aws.py ${instance_id} ${instance_type}'
             }
         }
        }
