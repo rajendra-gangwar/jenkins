@@ -34,7 +34,7 @@ else:
 
 print("Changing the instance type to ",sys.argv[2])
 
-response = clnt.modify_instance_attribute(InstanceIds =[sys.argv[1],],InstanceType={'Value': sys.argv[2]})
+response = clnt.modify_instance_attribute(InstanceId = sys.argv[1],InstanceType={'Value': sys.argv[2]})
 print("Sleep 10 sec")
 time.sleep(10)
 print(response)
