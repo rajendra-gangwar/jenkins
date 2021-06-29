@@ -13,12 +13,12 @@ print("Checking current InstanceType")
 response = client.describe_instance_attribute(Attribute='instanceType', DryRun=False, InstanceId=sys.argv[1])
 currentinst=response['InstanceType']['Value']
 
-if currentinst==sys.argv[2]:
+'''if currentinst==sys.argv[2]:
     print("No change in instance type")
     break
-else:
-    os.environ["beforechange"] = currentinst
-
+else:'''
+os.environ["beforechange"] = currentinst
+print("Current instance type is", currentinst)
 
 print("Checking if EC2 Instance is Running")
 if stat=='running':
