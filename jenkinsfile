@@ -1,9 +1,8 @@
-stages {
-        println ("$instance_type")
-        println ("$instance_id")
-        stage('Change instance type') {
-        steps {
-              echo "Hello"
+pipeline {
+    agent none
+    stages {
+        stage('Example Build') {
+            steps {
+                echo 'Hello World'
             }
         }
-    }
