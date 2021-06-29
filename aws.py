@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 import boto3
 import time
-import sys
+import sys, os
 
+os.environ['AWS_PROFILE']= "default"
 res=boto3.resource('ec2', region_name = 'us-east-1')
 clnt=boto3.client('ec2', region_name = 'us-east-1')
 inst=res.Instance(sys.argv[1])
