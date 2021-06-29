@@ -9,6 +9,17 @@ clnt=boto3.client('ec2')
 inst=res.Instance(sys.argv[1])
 stat=inst.state['Name']
 
+print("Checking current InstanceType")
+response = client.describe_instance_attribute(Attribute='instanceType', DryRun=False, InstanceId=sys.argv[1])
+currentinst=response['InstanceType']['Value']
+
+if currebtinst==sys.argv[2]:
+    print("No change in instance type")
+    break
+else:
+    os.environ["beforechange"] = currentinst
+
+
 print("Checking if EC2 Instance is Running")
 if stat=='running':
     print("Stopping Running Instance")
