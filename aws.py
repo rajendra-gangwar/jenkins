@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 import boto3
 import time
-
-
-
+import sys
 
 res=boto3.resource('ec2')
 clnt=boto3.client('ec2')
-inst=res.Instance('i-08731b77caf284d34')
+inst=res.Instance(sys.argv[1])
 
 stat=inst.state['Name']
 
@@ -20,7 +18,7 @@ else:
         print("Already in stopped State")
 
 time.sleep(30)
-response = clnt.modify_instance_attribute(InstanceId = 'i-08731b77caf284d34',InstanceType={'Value': 't2.medium'})
+response = clnt.modify_instance_attribute(InstanceId = sys.argv[1],InstanceType={'Value': sys.argv[2]})
 clnt.get_waiter('system_status_ok')
 
 
