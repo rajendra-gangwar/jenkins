@@ -2,6 +2,6 @@ stage('changing instance type') {
     println ("$instance_type")
     println ("$instance_id")
     steps {
-        sh 'echo "Hello"'
+        sh 'echo Hello'
     }
 }
