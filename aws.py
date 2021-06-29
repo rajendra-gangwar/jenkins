@@ -28,7 +28,7 @@ time.sleep(10)
 print("Starting the Instance")
 
 
-response = clnt.start_instances(InstanceIds=[sys.argv[2]], AdditionalInfo='string', DryRun=False)
+response = clnt.start_instances(InstanceIds=[sys.argv[1]], AdditionalInfo='string', DryRun=False)
 
 print(response)
 
