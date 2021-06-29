@@ -1,7 +1,12 @@
-stage('changing instance type') {
-    println ("$instance_type")
-    println ("$instance_id")
-    steps {
-        sh " echo 'hello world' "
+pipeline {
+    agent any }
+    stages {
+        println ("$instance_type")
+        println ("$instance_id")
+        stage('Change instance type') {
+            steps {
+                echo "Hello"
+            }
+        }
     }
 }
