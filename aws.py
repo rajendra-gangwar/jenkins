@@ -24,7 +24,7 @@ time.sleep(60)
 response = clnt.modify_instance_attribute(InstanceId = sys.argv[1],InstanceType={'Value': sys.argv[2]})
 #clnt.get_waiter('system_status_ok')
 time.sleep(10)
-printf("Starting the Instance")
+print("Starting the Instance")
 
 
 response = client.start_instances(InstanceIds=[sys.argv[2]], AdditionalInfo='string', DryRun=False)
