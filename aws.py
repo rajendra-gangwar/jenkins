@@ -27,7 +27,7 @@ if stat=='running':
         response = clnt.stop_instances(InstanceIds=sys.argv[1], DryRun=False)
         clnt.get_waiter('instance_stopped')
         print(response)
-    except ClientError as e:
+    except Exception as e:
         print(e)
         
     stat=inst.state['Name']
@@ -45,13 +45,13 @@ try:
    time.sleep(10)
    print(response)
    
-except ClientError as e:
+except Exception as e:
         print(e)
 
 print("Starting the Instance")       
 try:        
  
-    response = clnt.start_instances(InstanceIds=[sys.argv[1]], AdditionalInfo='string', DryRun=False)
+    response = clnt.start_instances(InstanceId= sys.argv[1], AdditionalInfo='string', DryRun=False)
     print(response)
-except ClientError as e:
+except Exception as e:
         print(e)
