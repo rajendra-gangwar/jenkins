@@ -23,7 +23,7 @@ print("Current instance type is", currentinst)
 print("Checking if EC2 Instance is Running")
 if stat=='running':
     print("Stopping Running Instance")
-    response = clnt.stop_instances(InstanceIds=sys.argv[1], DryRun=False)
+    response = clnt.stop_instances(InstanceIds=[sys.argv[1],], DryRun=False)
     clnt.get_waiter('instance_stopped')
     print(response)
     print(f"instance id {inst.id} is now in {inst.state['Name']} state" )
@@ -34,7 +34,7 @@ else:
 
 print("Changing the instance type to ",sys.argv[2])
 
-response = clnt.modify_instance_attribute(InstanceIds =sys.argv[1],InstanceType={'Value': sys.argv[2]})
+response = clnt.modify_instance_attribute(InstanceIds =[sys.argv[1],],InstanceType={'Value': sys.argv[2]})
 print("Sleep 10 sec")
 time.sleep(10)
 print(response)
