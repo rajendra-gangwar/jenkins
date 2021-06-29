@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('') {
             steps {
-                echo ${instance_id}, ${instance_type}
+                sh 'python3 test.py'
             }
         }
        }
