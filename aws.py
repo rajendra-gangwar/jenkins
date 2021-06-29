@@ -10,7 +10,7 @@ inst=res.Instance(sys.argv[1])
 stat=inst.state['Name']
 
 print("Checking current InstanceType")
-response = client.describe_instance_attribute(Attribute='instanceType', DryRun=False, InstanceId=sys.argv[1])
+response = clnt.describe_instance_attribute(Attribute='instanceType', DryRun=False, InstanceId=sys.argv[1])
 currentinst=response['InstanceType']['Value']
 
 '''if currentinst==sys.argv[2]:
