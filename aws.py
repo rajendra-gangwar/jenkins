@@ -3,7 +3,9 @@ import boto3
 import time
 import sys, os
 
-os.environ['AWS_PROFILE']= "default"
+aws_access_key_id=os.getenv('aws_access_key_id')
+aws_secret_access_key=os.getenv('aws_secret_access_key')
+
 res=boto3.resource('ec2', region_name = 'us-east-1')
 clnt=boto3.client('ec2', region_name = 'us-east-1')
 inst=res.Instance(sys.argv[1])
