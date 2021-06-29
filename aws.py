@@ -11,8 +11,7 @@ stat=inst.state['Name']
 
 print("Checking if EC2 Instance is Running")
 if stat=='running':
-        print("Stopping Running Instance")
-        
+    print("Stopping Running Instance")
     try:
         response = ec2.stop_instances(InstanceIds=sys.argv[1], DryRun=False)
         print(response)
@@ -28,13 +27,20 @@ else:
         print("Already in stopped State")
 
 print("Changing the instance type to ",sys.argv[2])
-response = clnt.modify_instance_attribute(InstanceId = sys.argv[1],InstanceType={'Value': sys.argv[2]})
+
+try:
+   response = clnt.modify_instance_attribute(InstanceId = sys.argv[1],InstanceType={'Value': sys.argv[2]})
 #clnt.get_waiter('system_status_ok')
-print("Sleep 60")
-time.sleep(10)
+   print("Sleep 60")
+   time.sleep(10)
+   print(response)
+   
+except ClientError as e:
+        print(e)
+
+        
+        
 print("Starting the Instance")
-
-
 response = clnt.start_instances(InstanceIds=[sys.argv[1]], AdditionalInfo='string', DryRun=False)
 
 print(response)
