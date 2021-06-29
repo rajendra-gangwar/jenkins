@@ -24,7 +24,7 @@ print("Checking if EC2 Instance is Running")
 if stat=='running':
     print("Stopping Running Instance")
     try:
-        response = clnt.stop_instances(InstanceIds=sys.argv[1], DryRun=False)
+        response = clnt.stop_instances(InstanceId=sys.argv[1], DryRun=False)
         clnt.get_waiter('instance_stopped')
         print(response)
     except Exception as e:
