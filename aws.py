@@ -14,15 +14,14 @@ if stat=='running':
     print("Stopping Running Instance")
     try:
         response = ec2.stop_instances(InstanceIds=sys.argv[1], DryRun=False)
+        clnt.get_waiter('instance_stopped')
         print(response)
     except ClientError as e:
         print(e)
         
-#        inst.stop()
-        clnt.get_waiter('instance_stopped')
-        stat=inst.state['Name']
-        print(f"instance id {inst.id} is now in {inst.state['Name']} state" )
-        time.sleep(60)
+    stat=inst.state['Name']
+    print(f"instance id {inst.id} is now in {inst.state['Name']} state" )
+    time.sleep(60)
 else:
         print("Already in stopped State")
 
@@ -38,9 +37,10 @@ try:
 except ClientError as e:
         print(e)
 
-        
-        
-print("Starting the Instance")
-response = clnt.start_instances(InstanceIds=[sys.argv[1]], AdditionalInfo='string', DryRun=False)
-
-print(response)
+print("Starting the Instance")       
+try:        
+ 
+    response = clnt.start_instances(InstanceIds=[sys.argv[1]], AdditionalInfo='string', DryRun=False)
+    print(response)
+except ClientError as e:
+        print(e)
