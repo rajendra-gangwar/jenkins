@@ -1,0 +1,17 @@
+Requirement:
+1. Getting 2 build parameter from jenkins: instance_id and instance_type
+2. Changing the instance type of instance_id EC2 instance to instance_type
+3. Run ansible playbook on it
+4. Revert the instance_type to pervious one.
+
+
+Jenkins config:
+1. Github Account key added in jenkins credential
+2. Plugins: Github, Ansible
+
+
+Component of pipline:
+1. Python script
+2. Ansible playbook
+3. Groovy Syntax for jenkinsfile
+
