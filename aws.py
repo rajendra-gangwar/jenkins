@@ -13,9 +13,9 @@ print("Checking current InstanceType")
 response = clnt.describe_instance_attribute(Attribute='instanceType', DryRun=False, InstanceId=sys.argv[1])
 currentinst=response['InstanceType']['Value']
 
-file=open('currtype.txt','w'):
-    file.write(currentinst)
-    file.close()
+file=open('currtype.txt','w')
+file.write(currentinst)
+file.close()
 
     
 print("Checking if EC2 Instance is Running")
