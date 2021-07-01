@@ -19,14 +19,8 @@ file.close()
 inst=res.Instance(inst_id)
 stat=inst.state['Name']
 
-print("Checking current InstanceType")
-response = clnt.describe_instance_attribute(Attribute='instanceType', DryRun=False, InstanceId=inst_id)
-print(response)
-
-
-    
 print("Checking if EC2 Instance is Running")
-if stat=='running':
+if stat!='stopped':
     print("Stopping Running Instance")
     response = clnt.stop_instances(InstanceIds=[inst_id,], DryRun=False)
     clnt.get_waiter('instance_stopped')
