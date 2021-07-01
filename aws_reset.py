@@ -9,11 +9,11 @@ clnt=boto3.client('ec2')
 
 
 file=open('currtype.txt','w')
-inst_type=file.readline()
+inst_type=file.read()
 file.close()
 
 file=open('currentid.txt','r')
-inst_id=file.readline()
+inst_id=file.read()
 file.close()
 
 inst=res.Instance(inst_id)
