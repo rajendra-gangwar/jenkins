@@ -6,14 +6,11 @@ pipeline {
                 sh 'python3 aws.py ${instance_id} ${instance_type}'
             }
            }
-           
-        stages('Running Ansible Playbook') {
-            steps {
+            stage('Running Ansible Playbook') {
+              steps {
                 ansiblePlaybook credentialsId: 'ansible-playbook', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'install.yml'
                 }
-             }
-        
-        
+              }     
         stage('Reverting the changes'){
             steps{
                 sh 'python3 aws_reset.py'
