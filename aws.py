@@ -15,7 +15,9 @@ currentinst=response['InstanceType']['Value']
 
 file=open('currtype.txt','w')
 file.write(currentinst)
-file.write("\n")
+file.close()
+
+file=open('currentid.txt','w')
 file.write(sys.argv[1])
 file.close()
 
