@@ -45,3 +45,6 @@ print("Starting the Instance")
        
 response = clnt.start_instances(InstanceIds= [sys.argv[1],], AdditionalInfo='string', DryRun=False)
 print(response)
+time.sleep(60)
+print("Ansible playbook will run in 60 sec")
+
