@@ -1,13 +1,13 @@
 ---
-- hosts: web_server
-  become: true
+- hosts: all
+  become: yes
   tasks:
-    - name: nginx installation
+    - name: httpd installation
       yum: 
-        name: nginx
+        name: httpd
         state: present
-    - name: starting nginx
+    - name: starting httpd
       service:
-          name: nginx
+          name: httpd
           state: started
           enabled: true
