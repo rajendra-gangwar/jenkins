@@ -49,6 +49,6 @@ print("Starting the Instance")
        
 response = clnt.start_instances(InstanceIds= [sys.argv[1],], AdditionalInfo='string', DryRun=False)
 print(response)
-time.sleep(60)
-print("Ansible playbook will run in 90 sec")
+stopped_instance_waiter = clnt.get_waiter('instance_running')
+stopped_instance_waiter.wait(InstanceIds=[sys.argv[1],])
 
