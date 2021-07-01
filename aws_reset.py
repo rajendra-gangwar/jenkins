@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import boto3
 import time
-import sys, os
+import sys
 
 
 res=boto3.resource('ec2')
@@ -20,14 +20,13 @@ inst=res.Instance(inst_id)
 stat=inst.state['Name']
 
 print("Checking if EC2 Instance is Running")
-if stat!='stopped':
+if stat=='running':
     print("Stopping Running Instance")
     response = clnt.stop_instances(InstanceIds=[inst_id,], DryRun=False)
-    clnt.get_waiter('instance_stopped')
     print(response)
-    print(f"instance id {inst.id} is now in {inst.state['Name']} state" )
-    print("Sleeping for 60 sec")
-    time.sleep(60)
+    stopped_instance_waiter = clnt.get_waiter('instance_stopped')
+    stopped_instance_waiter.wait(InstanceIds=[sys.argv[1],])
+    
 else:
         print("Already in stopped State")
 
