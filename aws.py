@@ -23,22 +23,20 @@ file.close()
 
     
 print("Checking if EC2 Instance is Running")
-if stat=='running':
+if stat!='stopped':
     print("Stopping Running Instance")
     response = clnt.stop_instances(InstanceIds=[sys.argv[1],], DryRun=False)
     clnt.get_waiter('instance_stopped')
-    print(response)
-    print(f"instance id {inst.id} is now in {inst.state['Name']} state" )
-    print("Sleeping for 60 sec")
-    time.sleep(60)
+    print("Sleeping for 90 sec")
+    time.sleep(90)
 else:
         print("Already in stopped State")
 
 print("Changing the instance type to ",sys.argv[2])
 
 response = clnt.modify_instance_attribute(InstanceId = sys.argv[1],InstanceType={'Value': sys.argv[2]})
-print("Sleep 10 sec")
-time.sleep(10)
+print("Sleep 20 sec")
+time.sleep(20)
 print(response)
 
 print("Starting the Instance")       
@@ -46,5 +44,5 @@ print("Starting the Instance")
 response = clnt.start_instances(InstanceIds= [sys.argv[1],], AdditionalInfo='string', DryRun=False)
 print(response)
 time.sleep(60)
-print("Ansible playbook will run in 60 sec")
+print("Ansible playbook will run in 90 sec")
 
