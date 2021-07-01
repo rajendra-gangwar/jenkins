@@ -15,6 +15,7 @@ currentinst=response['InstanceType']['Value']
 
 file=open('currtype.txt','w')
 file.write(currentinst)
+file.write("\n")
 file.close()
 
     
