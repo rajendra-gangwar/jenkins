@@ -13,13 +13,11 @@ print("Checking current InstanceType")
 response = clnt.describe_instance_attribute(Attribute='instanceType', DryRun=False, InstanceId=sys.argv[1])
 currentinst=response['InstanceType']['Value']
 
-'''if currentinst==sys.argv[2]:
-    print("No change in instance type")
-    break
-else:'''
-os.environ["beforechange"] = currentinst
-print("Current instance type is", currentinst)
+file=open('currtype.txt','w'):
+    file.write(currentinst)
+    file.close()
 
+    
 print("Checking if EC2 Instance is Running")
 if stat=='running':
     print("Stopping Running Instance")
