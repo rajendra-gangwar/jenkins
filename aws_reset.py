@@ -25,7 +25,7 @@ if stat=='running':
     response = clnt.stop_instances(InstanceIds=[inst_id,], DryRun=False)
     print(response)
     stopped_instance_waiter = clnt.get_waiter('instance_stopped')
-    stopped_instance_waiter.wait(InstanceIds=[sys.argv[1],])
+    stopped_instance_waiter.wait(InstanceIds=[inst_id,])
     
 else:
         print("Already in stopped State")
