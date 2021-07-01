@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Nginx install
+      yum: 
+        name: nginx
+        state: latest
+    - name: starting nginx
+      service:
+          name: nginx
+          state: started
