@@ -8,7 +8,7 @@ res=boto3.resource('ec2')
 clnt=boto3.client('ec2')
 
 
-file=open('currtype.txt','w')
+file=open('currtype.txt','r')
 inst_type=file.read()
 file.close()
 
