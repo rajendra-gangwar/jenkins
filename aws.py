@@ -26,9 +26,14 @@ print("Checking if EC2 Instance is Running")
 if stat!='stopped':
     print("Stopping Running Instance")
     response = clnt.stop_instances(InstanceIds=[sys.argv[1],], DryRun=False)
-    clnt.get_waiter('instance_stopped')
-    print("Sleeping for 90 sec")
-    time.sleep(90)
+ #   clnt.get_waiter('instance_stopped')
+    
+    stopped_instance_waiter = clnt.get_waiter('instance_stopped')
+    stopped_instance_waiter.wait(InstancesIds=[sys.argv[1],])
+    
+    
+ #   print("Sleeping for 90 sec")
+  #  time.sleep(90)
 else:
         print("Already in stopped State")
 
