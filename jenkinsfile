@@ -8,7 +8,7 @@ pipeline {
            }
         stage('Reverting the changes'){
             steps{
-                sh 'python3 aws_reset.py $(instance_id)'
+                sh 'python3 aws_reset.py'
                 }
         
         }
