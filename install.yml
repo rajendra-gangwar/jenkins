@@ -1,17 +1,13 @@
 ---
-- hosts: all
+- hosts: web_server
   become: true
   tasks:
-    - name: httpd installation
+    - name: nginx installation
       yum: 
-        name: httpd
+        name: nginx
         state: present
     - name: starting nginx
       service:
-          name: httpd
+          name: nginx
           state: started
           enabled: true
-    - name: Static site
-      copy: 
-        src: index.html
-        dest: /var/www/html/
