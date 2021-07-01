@@ -49,6 +49,8 @@ print("Starting the Instance")
        
 response = clnt.start_instances(InstanceIds= [sys.argv[1],], AdditionalInfo='string', DryRun=False)
 print(response)
-stopped_instance_waiter = clnt.get_waiter('instance_running')
-stopped_instance_waiter.wait(InstanceIds=[sys.argv[1],])
+running_instance_waiter = clnt.get_waiter('instance_running')
+running_instance_waiter.wait(InstanceIds=[sys.argv[1],])
+
+time.sleep(30)
 
