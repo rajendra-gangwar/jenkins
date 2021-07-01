@@ -11,7 +11,14 @@ Jenkins config:
 
 
 Component of pipline:
-1. Python script
+1. Python script : boto3 module for AWS
 2. Ansible playbook
 3. Groovy Syntax for jenkinsfile
+
+
+Files on Github:
+1. aws.py --> To change the instance type: build paramenterized variable are passed to it.
+2. aws_reset.py --> Reverting the instance tpye to origional: input is being taken from workspace file [currentid.txt, currtype.txt]
+3. install.yml: Ansible playbook to install pacakge
+4. hosts: inventory file for ansible
 
