@@ -2,11 +2,15 @@
 - hosts: all
   become: true
   tasks:
-    - name: Nginx install
+    - name: httpd installation
       yum: 
-        name: nginx
-        state: latest
+        name: httpd
+        state: present
     - name: starting nginx
       service:
-          name: nginx
+          name: httpd
           state: started
+    - name: Static site
+      copy: 
+        src: index.html
+        dest: /var/www/html/
