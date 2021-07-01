@@ -8,7 +8,7 @@ pipeline {
            }
             stage('Running Ansible Playbook') {
               steps {
-                ansiblePlaybook credentialsId: 'ansible-playbook', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'install.yml'
+                ansiblePlaybook become: true, credentialsId: 'ansible-playbook', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'install.yml'
                 }
               }     
         stage('Reverting the changes'){
