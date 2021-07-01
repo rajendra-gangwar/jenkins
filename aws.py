@@ -23,7 +23,7 @@ file.close()
 
     
 print("Checking if EC2 Instance is Running")
-if stat!='stopped':
+if stat=='running':
     print("Stopping Running Instance")
     response = clnt.stop_instances(InstanceIds=[sys.argv[1],], DryRun=False)
     print(reponse)
